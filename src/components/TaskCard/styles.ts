@@ -1,90 +1,92 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100%;
-  border-radius: 8px;
-  border: 1px solid ${({ theme }) => theme["gray-400"]};
-  background: ${({ theme }) => theme["gray-500"]};
-  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.06);
-  padding: 1rem;
-  user-select: none;
   display: flex;
-  align-items: flex-start;
-  gap: 0.875rem;
+  flex: 1;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: ${({ theme }) => theme["gray-500"]};
+  border: 1px solid ${({ theme }) => theme["gray-400"]};
 
-  > label {
-    cursor: pointer;
-
-    > input[type="checkbox"] {
-      display: none;
-    }
-  }
-  > p {
-    color: ${({ theme }) => theme["gray-100"]};
-    font-size: 0.875rem;
-    font-weight: 400;
-    line-height: 1.4;
-
-    &.completed {
-      text-decoration: line-through;
-      color: ${({ theme }) => theme["gray-300"]};
-    }
-  }
-
-  button {
-    width: 24px;
-    height: 24px;
-    font-size: 1rem;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: ${({ theme }) => theme["gray-300"]};
-    transition: all 0.2s ease-in-out;
-    border-radius: 4px;
+  > div {
     display: flex;
-    justify-content: center;
-    align-items: center;
 
-    &:hover {
-      color: ${({ theme }) => theme["danger"]};
-      background: ${({ theme }) => theme["gray-400"]};
+    > label {
+      display: flex;
+      padding: 3px;
+      align-items: center;
+      gap: 0.75rem;
+
+      > input[type="checkbox"] {
+        display: none;
+      }
     }
+  }
+
+  & + & {
+    margin-top: 0.75rem;
   }
 `;
 
 export const Checkbox = styled.span`
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
+  border-radius: 100%;
+  height: 1.125rem;
+  width: 1.125rem;
+  transition: 0.2s all;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 2px solid ${({ theme }) => theme["blue"]};
-  border-radius: 50%;
-  position: relative;
-  transition: all 0.2s ease-in-out;
+  cursor: pointer;
 
   &:hover {
-    filter: brightness(1.2);
+    filter: brightness(1.4);
   }
 
-  &:before {
-    content: "✔";
-    font-size: 0.6rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background-color: ${({ theme }) => theme["purple-dark"]};
+  &.checked {
     border: 2px solid ${({ theme }) => theme["purple-dark"]};
-    color: #fff;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
+    background-color: ${({ theme }) => theme["purple-dark"]};
   }
 
-  .label.checked &:before {
-    opacity: 1;
+  > svg {
+    color: ${({ theme }) => theme["gray-100"]};
+  }
+`;
+
+export const Paragraph = styled.p`
+  font-size: 0.875rem;
+  line-height: 1.4;
+  user-select: none;
+  color: ${({ theme }) => theme["gray-100"]};
+  transition: 0.2s all;
+  cursor: pointer;
+
+  &.checked {
+    text-decoration: line-through;
+    color: ${({ theme }) => theme["gray-300"]};
+  }
+`;
+
+export const ButtonDelete = styled.button`
+  border: none;
+  background-color: transparent;
+  border-radius: 4px;
+  padding: 5px 4px 2px 4px;
+  transition: 0.2s all;
+  cursor: pointer;
+
+  > svg {
+    color: ${({ theme }) => theme["gray-300"]};
+  }
+
+  &:hover {
+    background-color: ${({ theme }) => theme["gray-400"]};
+
+    > svg {
+      color: ${({ theme }) => theme["danger"]};
+    }
   }
 `;
