@@ -22,20 +22,18 @@ export const TaskCard: React.FC<Props> = ({
     toggleTaskStatus(data.id, !data.isChecked);
   };
 
-  const checkboxCheckedClassname = data.isChecked ? "checked" : "";
-
-  const paragraphCheckedClassname = data.isChecked ? "checked" : "";
-
   return (
     <Container>
       <div>
         <label htmlFor="checkbox" onClick={handleTaskToggle}>
           <input readOnly type="checkbox" checked={data.isChecked} />
-          <Checkbox className={`${checkboxCheckedClassname}`}>
+          <Checkbox
+            isCheckedStyled={data.isChecked}
+            title="Marcar como concluída"
+          >
             {data.isChecked && <FiCheck size={12} />}
           </Checkbox>
-
-          <Paragraph className={` ${paragraphCheckedClassname}`}>
+          <Paragraph isCheckedStyled={data.isChecked}>
             {data.contentTask}
           </Paragraph>
         </label>

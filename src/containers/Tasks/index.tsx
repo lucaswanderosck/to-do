@@ -35,9 +35,9 @@ export const Tasks: React.FC = () => {
     setInputValue("");
   };
 
-  const deleteTask = (id: number) => {
-    const filteredTasks = tasksState.filter((task) => task.id !== id);
-    setTasksState(filteredTasks);
+  const handleDeleteTask = (id: number) => {
+    const updatedTasks = tasksState.filter((task) => task.id !== id);
+    setTasksState(updatedTasks);
   };
 
   const handleToggleTask = (id: number, value: boolean) => {
@@ -82,7 +82,7 @@ export const Tasks: React.FC = () => {
             <TaskCard
               key={task.id}
               data={task}
-              onDeleteTask={deleteTask}
+              onDeleteTask={handleDeleteTask}
               toggleTaskStatus={handleToggleTask}
             />
           ))}

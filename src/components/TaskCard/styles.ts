@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface Props {
+  isCheckedStyled: boolean;
+}
+
 export const Container = styled.div`
   display: flex;
   flex: 1;
@@ -31,7 +35,8 @@ export const Container = styled.div`
   }
 `;
 
-export const Checkbox = styled.span`
+export const Checkbox = styled.span<Props>`
+  user-select: none;
   border-radius: 100%;
   height: 1.125rem;
   width: 1.125rem;
@@ -41,14 +46,18 @@ export const Checkbox = styled.span`
   justify-content: center;
   border: 2px solid ${({ theme }) => theme["blue"]};
   cursor: pointer;
+  border-style: solid;
+  border-width: 2px;
+  border-color: ${({ isCheckedStyled, theme }) =>
+    isCheckedStyled ? theme["purple-dark"] : theme["blue"]};
+  background-color: ${({ isCheckedStyled, theme }) =>
+    isCheckedStyled ? theme["purple-dark"] : "transparent"};
 
   &:hover {
-    filter: brightness(1.4);
-  }
-
-  &.checked {
-    border: 2px solid ${({ theme }) => theme["purple-dark"]};
-    background-color: ${({ theme }) => theme["purple-dark"]};
+    background-color: ${({ isCheckedStyled, theme }) =>
+      isCheckedStyled ? theme["purple"] : "rgba(30, 111, 159, 0.2)"};
+    border-color: ${({ isCheckedStyled, theme }) =>
+      isCheckedStyled && theme["purple"]};
   }
 
   > svg {
@@ -56,18 +65,16 @@ export const Checkbox = styled.span`
   }
 `;
 
-export const Paragraph = styled.p`
+export const Paragraph = styled.p<Props>`
   font-size: 0.875rem;
   line-height: 1.4;
   user-select: none;
-  color: ${({ theme }) => theme["gray-100"]};
   transition: 0.2s all;
   cursor: pointer;
-
-  &.checked {
-    text-decoration: line-through;
-    color: ${({ theme }) => theme["gray-300"]};
-  }
+  color: ${({ isCheckedStyled, theme }) =>
+    isCheckedStyled ? theme["gray-300"] : theme["gray-100"]};
+  text-decoration: ${({ isCheckedStyled }) =>
+    isCheckedStyled ? "line-through" : "none"};
 `;
 
 export const ButtonDelete = styled.button`
