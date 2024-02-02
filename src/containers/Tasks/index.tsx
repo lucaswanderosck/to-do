@@ -33,6 +33,7 @@ export const Tasks: React.FC = () => {
 
     setTasksState((state) => [...state, newTask]);
     setInputValue("");
+    toast.success("Tarefa criada com sucesso");
   };
 
   const handleDeleteTask = (id: number) => {
@@ -89,7 +90,7 @@ export const Tasks: React.FC = () => {
         </TaskList>
       )}
 
-      <ToastContainer theme="dark" autoClose={3000} />
+      <ToastContainer theme="dark" autoClose={2500} />
     </Container>
   );
 };
