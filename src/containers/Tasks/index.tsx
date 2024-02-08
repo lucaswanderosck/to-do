@@ -14,8 +14,20 @@ export interface ITasks {
 }
 
 export const Tasks: React.FC = () => {
-  const [tasksState, setTasksState] = React.useState<ITasks[]>([]);
   const [inputValue, setInputValue] = React.useState("");
+  const [tasksState, setTasksState] = React.useState<ITasks[]>(()=> {
+    const stateJSON = localStorage.getItem('@todo:tasks-state-1.0.0')
+    if (stateJSON) {
+      return JSON.parse(stateJSON)
+    } 
+    return []
+  }
+  );
+
+  React.useEffect(() => {
+    const stateJSON = JSON.stringify(tasksState)
+    localStorage.setItem('@todo:tasks-state-1.0.0', stateJSON)
+  }, [tasksState])
 
   const taskCounter = tasksState.length;
   const taskCompleted = tasksState.filter((task) => task.isChecked).length;
@@ -51,6 +63,7 @@ export const Tasks: React.FC = () => {
 
     setTasksState(updatedTasks);
   };
+
 
   return (
     <Container>
