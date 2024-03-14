@@ -1,6 +1,6 @@
-import React from "react";
-import rocket from "../../assets/images/rocket.svg";
-import { Container, Title } from "./styles";
+import React from 'react'
+import rocket from '../../assets/images/rocket.svg'
+import { Container, Title } from './styles'
 
 export const Header: React.FC = () => {
   return (
@@ -11,5 +11,5 @@ export const Header: React.FC = () => {
         <span>do</span>
       </Title>
     </Container>
-  );
-};
+  )
+}

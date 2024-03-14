@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.header`
   width: 100%;
-  background: ${({ theme }) => theme["gray-700"]};
+  background: ${({ theme }) => theme['gray-700']};
   padding: 5rem 0;
-`;
+`
 
 export const Title = styled.h1`
   display: flex;
@@ -18,10 +18,10 @@ export const Title = styled.h1`
   }
 
   > span:nth-last-child(2) {
-    color: ${({ theme }) => theme["blue"]};
+    color: ${({ theme }) => theme.blue};
   }
 
   > span:last-child {
-    color: ${({ theme }) => theme["purple-dark"]};
+    color: ${({ theme }) => theme['purple-dark']};
   }
-`;
+`

@@ -1,9 +1,9 @@
-import React from "react";
-import { ThemeProvider } from "styled-components";
-import { Header } from "./containers/Header";
-import { Tasks } from "./containers/Tasks";
-import { GlobalStles } from "./styles/global";
-import { defaultTheme } from "./styles/themes/default";
+import React from 'react'
+import { ThemeProvider } from 'styled-components'
+import { Header } from './containers/Header'
+import { Tasks } from './containers/Tasks'
+import { GlobalStles } from './styles/global'
+import { defaultTheme } from './styles/themes/default'
 
 export const App: React.FC = () => {
   return (
@@ -12,5 +12,5 @@ export const App: React.FC = () => {
       <Header />
       <Tasks />
     </ThemeProvider>
-  );
-};
+  )
+}

@@ -1,12 +1,12 @@
-import React from "react";
-import { FiCheck, FiTrash2 } from "react-icons/fi";
-import { ITasks } from "../../containers/Tasks";
-import { ButtonDelete, Checkbox, Container, Paragraph } from "./styles";
+import React from 'react'
+import { FiCheck, FiTrash2 } from 'react-icons/fi'
+import { ITasks } from '../../containers/Tasks'
+import { ButtonDelete, Checkbox, Container, Paragraph } from './styles'
 
 interface Props {
-  data: ITasks;
-  onDeleteTask: (id: number) => void;
-  toggleTaskStatus: (id: number, value: boolean) => void;
+  data: ITasks
+  onDeleteTask: (id: number) => void
+  toggleTaskStatus: (id: number, value: boolean) => void
 }
 
 export const TaskCard: React.FC<Props> = ({
@@ -15,12 +15,12 @@ export const TaskCard: React.FC<Props> = ({
   toggleTaskStatus,
 }) => {
   const handleDeleteTask = () => {
-    onDeleteTask(data.id);
-  };
+    onDeleteTask(data.id)
+  }
 
   const handleTaskToggle = () => {
-    toggleTaskStatus(data.id, !data.isChecked);
-  };
+    toggleTaskStatus(data.id, !data.isChecked)
+  }
 
   return (
     <Container>
@@ -42,5 +42,5 @@ export const TaskCard: React.FC<Props> = ({
         <FiTrash2 size={16} />
       </ButtonDelete>
     </Container>
-  );
-};
+  )
+}

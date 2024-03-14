@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStles = createGlobalStyle`
   * {
@@ -10,7 +10,7 @@ export const GlobalStles = createGlobalStyle`
   body {
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
-    background: ${({ theme }) => theme["gray-600"]};
+    background: ${({ theme }) => theme['gray-600']};
     -webkit-font-smoothing: antialiased;
   }
-`;
+`

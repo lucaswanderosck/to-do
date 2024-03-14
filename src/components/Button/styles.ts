@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.button`
   border: 0;
-  background: ${({ theme }) => theme["blue-dark"]};
-  color: ${({ theme }) => theme["gray-100"]};
+  background: ${({ theme }) => theme['blue-dark']};
+  color: ${({ theme }) => theme['gray-100']};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,6 +17,6 @@ export const Container = styled.button`
   cursor: pointer;
 
   &:hover {
-    background: ${({ theme }) => theme["blue"]};
+    background: ${({ theme }) => theme.blue};
   }
-`;
+`

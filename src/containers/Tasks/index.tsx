@@ -1,69 +1,67 @@
-import React from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import clipboard from "../../assets/images/clipboard.png";
-import { Button } from "../../components/Button";
-import { Input } from "../../components/Input";
-import { TaskCard } from "../../components/TaskCard";
-import { Container, EmptyTasks, TaskForm, TaskInfos, TaskList } from "./styles";
+import React from 'react'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import clipboard from '../../assets/images/clipboard.png'
+import { Button } from '../../components/Button'
+import { Input } from '../../components/Input'
+import { TaskCard } from '../../components/TaskCard'
+import { Container, EmptyTasks, TaskForm, TaskInfos, TaskList } from './styles'
 
 export interface ITasks {
-  id: number;
-  contentTask: string;
-  isChecked: boolean;
+  id: number
+  contentTask: string
+  isChecked: boolean
 }
 
 export const Tasks: React.FC = () => {
-  const [inputValue, setInputValue] = React.useState("");
-  const [tasksState, setTasksState] = React.useState<ITasks[]>(()=> {
+  const [inputValue, setInputValue] = React.useState('')
+  const [tasksState, setTasksState] = React.useState<ITasks[]>(() => {
     const stateJSON = localStorage.getItem('@todo:tasks-state-1.0.0')
     if (stateJSON) {
       return JSON.parse(stateJSON)
-    } 
+    }
     return []
-  }
-  );
+  })
 
   React.useEffect(() => {
     const stateJSON = JSON.stringify(tasksState)
     localStorage.setItem('@todo:tasks-state-1.0.0', stateJSON)
   }, [tasksState])
 
-  const taskCounter = tasksState.length;
-  const taskCompleted = tasksState.filter((task) => task.isChecked).length;
+  const taskCounter = tasksState.length
+  const taskCompleted = tasksState.filter((task) => task.isChecked).length
 
   const handleCreateNewTask = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+    event.preventDefault()
     if (!inputValue) {
-      return toast.error("Você precisa informar uma tarefa");
+      return toast.error('Você precisa informar uma tarefa')
     }
     const newTask = {
       id: new Date().getTime(),
       contentTask: inputValue,
       isChecked: false,
-    };
+    }
 
-    setTasksState((state) => [...state, newTask]);
-    setInputValue("");
-    toast.success("Tarefa criada com sucesso");
-  };
+    setTasksState((state) => [...state, newTask])
+    setInputValue('')
+    toast.success('Tarefa criada com sucesso')
+  }
 
   const handleDeleteTask = (id: number) => {
-    const updatedTasks = tasksState.filter((task) => task.id !== id);
-    setTasksState(updatedTasks);
-  };
+    const updatedTasks = tasksState.filter((task) => task.id !== id)
+    setTasksState(updatedTasks)
+  }
 
   const handleToggleTask = (id: number, value: boolean) => {
     const updatedTasks = tasksState.map((task) => {
       if (task.id === id) {
-        return { ...task, isChecked: value };
+        return { ...task, isChecked: value }
       }
-      return { ...task };
-    });
+      return { ...task }
+    })
 
-    setTasksState(updatedTasks);
-  };
-
+    setTasksState(updatedTasks)
+  }
 
   return (
     <Container>
@@ -72,7 +70,7 @@ export const Tasks: React.FC = () => {
           value={inputValue}
           onChange={(event) => setInputValue(event.target.value)}
         />
-        <Button title="Criar a tarefa" children="Criar" />
+        <Button title="Criar a tarefa">Criar</Button>
       </TaskForm>
       <TaskInfos>
         <p>
@@ -105,5 +103,5 @@ export const Tasks: React.FC = () => {
 
       <ToastContainer theme="dark" autoClose={2500} />
     </Container>
-  );
-};
+  )
+}
